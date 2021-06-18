@@ -20,7 +20,59 @@ There are various methods we load the data into database:
 
 We have three different json data.
 
-    fetchdb=# CREATE VIEW rewards_view AS
+##### 1- users.json
+##### 2- brands.json
+##### 3- receipts.json
+
+
+###### Now lets create a database tables for all the above json data
+
+![receipts-users-brands](https://user-images.githubusercontent.com/66418035/122520611-7ecda480-d01c-11eb-96d3-e88e39a9c29f.png)
+
+###### Lets upload the json data into the database through python with psycpg2 
+
+![loading-data-into-database](https://user-images.githubusercontent.com/66418035/122520740-ab81bc00-d01c-11eb-86ef-d2075cd19f74.png)
+
+
+
+###### Lets create a view for users Tables
+
+
+    fetchdb=# CREATE VIEW user_view AS 
+    SELECT
+    DATA -> '_id' ->> '$oid' AS _id,
+    DATA ->> 'active' AS active,
+    DATA -> 'createdDate' ->> '$date' AS createddate ,
+    DATA -> 'lastLogin' ->> '$date' AS lastlogin,
+    DATA ->> 'role' AS role,
+    DATA ->> 'signUpSource' AS signupsource,
+    DATA ->> 'state' AS state
+    fetchdb-# FROM users;
+    
+ ![user-view](https://user-images.githubusercontent.com/66418035/122521241-42e70f00-d01d-11eb-84a9-bc9887a35beb.png)
+
+
+###### Create a view for brands Tables
+
+
+    fetchdb=# CREATE VIEW brands_view AS
+    SELECT
+    DATA -> '_id' ->> '$oid' AS _id,
+    DATA ->> 'barcode' AS barcode,
+    DATA ->> 'category' AS category,
+    DATA ->> 'categoryCode' AS category_code,
+    DATA -> 'cpg' -> '$oid' ->> '$oid' AS cpg_id,
+    DATA -> 'cpg' ->> '$ref' AS cpg_ref,
+    DATA ->> 'name' AS name,
+    DATA ->> 'topBrand' AS topbrand 
+    FROM brands;
+
+![brands_view](https://user-images.githubusercontent.com/66418035/122521273-4da1a400-d01d-11eb-9a22-a904123053f0.png)
+
+
+
+
+###### Create a view for receipts Tables
     
     fetchdb=# CREATE VIEW receipts_view AS
     SELECT
@@ -41,6 +93,14 @@ We have three different json data.
     FROM receipts;
     
     
+![receipts-view](https://user-images.githubusercontent.com/66418035/122521303-55f9df00-d01d-11eb-9a09-068b2a7f1704.png)
+    
+    
+    
+   
+    
+###### Create a view for rewards Tables from the list within receipts:
+    
     SELECT 
     DATA -> '_id' ->> '$oid' AS _id,
     jsonb_array_elements(DATA -> 'rewardsReceiptItemList') ->> 'barcode' AS barcode,
@@ -57,29 +117,8 @@ We have three different json data.
     jsonb_array_elements(DATA -> 'rewardsReceiptItemList') ->> 'userFlaggedQuantity' AS user_flagged_quantity
     from receipts;
 
-    fetchdb=# CREATE VIEW user_view AS 
-    SELECT
-    DATA -> '_id' ->> '$oid' AS _id,
-    DATA ->> 'active' AS active,
-    DATA -> 'createdDate' ->> '$date' AS createddate ,
-    DATA -> 'lastLogin' ->> '$date' AS lastlogin,
-    DATA ->> 'role' AS role,
-    DATA ->> 'signUpSource' AS signupsource,
-    DATA ->> 'state' AS state
-    fetchdb-# FROM users;
-
-
-    fetchdb=# CREATE VIEW brands_view AS
-    SELECT
-    DATA -> '_id' ->> '$oid' AS _id,
-    DATA ->> 'barcode' AS barcode,
-    DATA ->> 'category' AS category,
-    DATA ->> 'categoryCode' AS category_code,
-    DATA -> 'cpg' -> '$oid' ->> '$oid' AS cpg_id,
-    DATA -> 'cpg' ->> '$ref' AS cpg_ref,
-    DATA ->> 'name' AS name,
-    DATA ->> 'topBrand' AS topbrand 
-    FROM brands;
+   
+![rewards-view](https://user-images.githubusercontent.com/66418035/122521323-5e521a00-d01d-11eb-8560-46914d487a66.png)
 
 
 
