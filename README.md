@@ -1,4 +1,6 @@
 
+![GitHub repo size](https://img.shields.io/github/repo-size/mushahidmehdi/Data-Analysis-Using-PostgreSQL-dialects?style=plastic)
+
 # Data Analysis - Fetch Rewards Coding Exercise 
 In this project we will demonstrate how to understand data and relate one data set to other to answer predetermine bussiness question.
 
