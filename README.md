@@ -1,5 +1,11 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/mushahidmehdi/Data-Analysis-Using-PostgreSQL-dialects?style=plastic)
+![Read the Docs](https://img.shields.io/readthedocs/pip?style=plastic)
+![GitHub commit merge status](https://img.shields.io/github/commit-status/mushahidmehdi/Full-Stack-Web-Application/main/c49a9cf916c11d163b7b4d1256b89c211793d6ee)
+
+![Conda](https://img.shields.io/conda/pn/conda-forge/python)
+
+
 
 # Data Analysis - Fetch Rewards Coding Exercise 
 In this project we will demonstrate how to understand data and relate one data set to other to answer predetermine bussiness question.
@@ -9,8 +15,9 @@ There are various methods we load the data into database:
 
 ###### 1- Writing SQL dialect patriculay related to the RBMS in used in my case PostgreSQL.
 ###### 2- Traditional way of uploading data into database using Python
-(JSON-Data-Analysis-in-Python https://github.com/mushahidmehdi/JSON-Data-Analysis-in-Python/edit/main/README.md in this repo we will perform exactly same task but using Python Functions)
 
+JSON-Data-Analysis-in-Python in this repo we will perform exactly same task but using Python Functions                                                             
+https://github.com/mushahidmehdi/JSON-Data-Analysis-in-Python/edit/main/README.md
 
 ## In This Project we will use PostgreSQL dilects to genrate RDBMS
 
