@@ -17,7 +17,7 @@ There are various methods we load the data into database:
 ###### 2- Traditional way of uploading data into database using Python
 
 JSON-Data-Analysis-in-Python in this repo we will perform exactly same task but using Python Functions                                                             
-https://github.com/mushahidmehdi/JSON-Data-Analysis-in-Python/edit/main/README.md
+https://github.com/mushahidmehdi/JSON-Data-Analysis-in-Python/README.md
 
 ## In This Project we will use PostgreSQL dilects to genrate RDBMS
 
